@@ -1,13 +1,17 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CreateProjectRequest } from '../requests/create-project.request';
-import { CreateProject } from '../../application/usecases/create-project.usecase';
-import { ListProjects } from '../../application/usecases/list-projects.usecase';
+import {
+  CreateProject,
+  DetailProjectById,
+  ListProjects,
+} from '@modules/project/application/usecases';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateProjectRequest } from '../requests';
 
 @Controller('projects')
 export class PojectController {
   constructor(
     private readonly createProjectUseCase: CreateProject,
     private readonly listProjectsUseCase: ListProjects,
+    private readonly detailProjectByIdUseCase: DetailProjectById,
   ) {}
 
   @Post()
@@ -19,5 +23,10 @@ export class PojectController {
   @Get()
   async list() {
     return await this.listProjectsUseCase.execute();
+  }
+
+  @Get('/:id')
+  async detail(@Param('id') id: string) {
+    return await this.detailProjectByIdUseCase.execute({ id });
   }
 }

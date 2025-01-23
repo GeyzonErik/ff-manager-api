@@ -1,27 +1,37 @@
 import { EnvironmentType } from '@prisma/client';
+import { randomUUID } from 'crypto';
 
 export class Feature {
-  private _id: string;
-  name: string;
-  description: string | undefined;
-  enable: boolean;
-  environment: EnvironmentType;
-
   constructor(
-    id: string,
-    name: string,
-    description?: string,
-    enable?: boolean,
-    environment?: EnvironmentType,
-  ) {
-    this._id = id;
-    this.name = name;
-    this.description = description;
-    this.enable = enable ?? false;
-    this.environment = environment ?? 'DEV';
+    private _id: string,
+    readonly name: string,
+    readonly description?: string,
+    readonly enable?: boolean,
+    readonly environment?: EnvironmentType,
+  ) {}
+
+  static create(data: CreateFeatureData): Feature {
+    const id = data.id ?? randomUUID();
+    const environment = data.environment ?? 'DEV';
+
+    return new Feature(
+      id,
+      data.name,
+      data.description,
+      data.enable,
+      environment,
+    );
   }
 
   getId(): string {
     return this._id;
   }
 }
+
+export type CreateFeatureData = {
+  id: string;
+  name: string;
+  description?: string;
+  enable?: boolean;
+  environment?: EnvironmentType;
+};
