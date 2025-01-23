@@ -1,6 +1,6 @@
+import { ProjectPgRepository } from '@modules/project/data/repositories';
 import { Inject } from '@nestjs/common';
-import { ProjectPgRepository } from '../../data/repositories/project-pg.repository';
-import { ProjectRepository } from '../repositories/project.repository';
+import { ProjectRepository } from '../repositories';
 
 export type ListProjectsOutput = {
   id: string;

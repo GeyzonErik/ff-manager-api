@@ -1,4 +1,4 @@
-import { Project } from '../../domain/entities/project.entity';
+import { Project } from '@modules/project/domain/entities';
 
 export abstract class ProjectRepository {
   abstract create(data: Project): Promise<void>;

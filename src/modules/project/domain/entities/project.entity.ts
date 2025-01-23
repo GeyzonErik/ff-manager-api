@@ -1,5 +1,5 @@
+import { Feature } from '@modules/feature/domain/entities';
 import { randomUUID } from 'crypto';
-import { Feature } from 'src/modules/feature/domain/entities/feature.entity';
 
 export class Project {
   private constructor(

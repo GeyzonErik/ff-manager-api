@@ -1,6 +1,6 @@
-import { PrismaService } from 'src/modules/prisma/service/prisma.service';
-import { ProjectAPIKeyRepository } from '../../application/repositories/project-api-key.repository';
-import { ProjectApiKey } from '../../domain/entities/project-keys.entity';
+import { PrismaService } from '@modules/prisma/service/prisma.service';
+import { ProjectAPIKeyRepository } from '@modules/project/application/repositories';
+import { ProjectApiKey } from '@modules/project/domain/entities';
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()

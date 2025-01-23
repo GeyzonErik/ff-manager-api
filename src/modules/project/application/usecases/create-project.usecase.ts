@@ -1,11 +1,11 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { Project } from '../../domain/entities/project.entity';
-import { ProjectRepository } from '../repositories/project.repository';
 import { ApiKeyService } from '../services/api-key.service';
-import { ProjectPgRepository } from '../../data/repositories/project-pg.repository';
-import { ProjectAPIKeyRepository } from '../repositories/project-api-key.repository';
-import { ProjectApiKey } from '../../domain/entities/project-keys.entity';
-import { ProjectAPIKeyPgRepository } from '../../data/repositories/project-api-key-pg.repository';
+import {
+  ProjectAPIKeyPgRepository,
+  ProjectPgRepository,
+} from '@modules/project/data/repositories';
+import { ProjectAPIKeyRepository, ProjectRepository } from '../repositories';
+import { Project, ProjectApiKey } from '@modules/project/domain/entities';
 
 export type CreateProjectInput = {
   name: string;

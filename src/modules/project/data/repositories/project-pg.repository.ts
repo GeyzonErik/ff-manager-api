@@ -1,8 +1,8 @@
-import { ProjectRepository } from '../../application/repositories/project.repository';
-import { PrismaService } from 'src/modules/prisma/service/prisma.service';
-import { Project } from '../../domain/entities/project.entity';
+import { PrismaService } from '@modules/prisma/service/prisma.service';
+import { ProjectMapper } from '@modules/project/api/mappers';
+import { ProjectRepository } from '@modules/project/application/repositories';
+import { Project } from '@modules/project/domain/entities';
 import { Inject, Injectable } from '@nestjs/common';
-import { ProjectMapper } from '../../api/mappers/project.mapper';
 
 @Injectable()
 export class ProjectPgRepository implements ProjectRepository {
