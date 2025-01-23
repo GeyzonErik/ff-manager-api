@@ -3,6 +3,7 @@ import {
   CreateProject,
   DetailProjectById,
   ListProjects,
+  UpdateProjectById,
 } from './application/usecases';
 import { ApiKeyService } from './application/services/api-key.service';
 import {
@@ -18,6 +19,7 @@ import { PojectController } from './api/controllers/project.controller';
     CreateProject,
     ListProjects,
     DetailProjectById,
+    UpdateProjectById,
     ApiKeyService,
     ProjectPgRepository,
     ProjectAPIKeyPgRepository,

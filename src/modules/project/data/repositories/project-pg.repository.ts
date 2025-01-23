@@ -52,4 +52,16 @@ export class ProjectPgRepository implements ProjectRepository {
       ? ProjectMapper.toDomain({ ...project, features: [] })
       : null;
   }
+
+  async update(data: Project): Promise<void> {
+    await this.prisma.project.update({
+      where: {
+        id: data.getId(),
+      },
+      data: {
+        name: data.name,
+        description: data.description,
+      },
+    });
+  }
 }
