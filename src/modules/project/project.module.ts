@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import {
   CreateProject,
+  DeleteProject,
   DetailProjectById,
   ListProjects,
   UpdateProjectById,
@@ -20,6 +21,7 @@ import { PojectController } from './api/controllers/project.controller';
     ListProjects,
     DetailProjectById,
     UpdateProjectById,
+    DeleteProject,
     ApiKeyService,
     ProjectPgRepository,
     ProjectAPIKeyPgRepository,

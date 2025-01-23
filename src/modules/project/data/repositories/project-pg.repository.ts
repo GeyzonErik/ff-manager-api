@@ -64,4 +64,15 @@ export class ProjectPgRepository implements ProjectRepository {
       },
     });
   }
+
+  async delete(data: { id: string }): Promise<void> {
+    await this.prisma.project.delete({
+      where: {
+        id: data.id,
+      },
+      include: {
+        features: true,
+      },
+    });
+  }
 }

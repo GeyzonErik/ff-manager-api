@@ -11,7 +11,7 @@ export class ProjectMapper {
       id: data.id,
       name: data.name,
       description: data.description,
-      features: data.features.map(FeatureMapper.toDomain),
+      features: data.features ? data.features.map(FeatureMapper.toDomain) : [],
     });
   }
 }

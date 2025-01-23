@@ -1,10 +1,19 @@
 import {
   CreateProject,
+  DeleteProject,
   DetailProjectById,
   ListProjects,
   UpdateProjectById,
 } from '@modules/project/application/usecases';
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { CreateProjectRequest, UdpdateProjectRequest } from '../requests';
 
 @Controller('projects')
@@ -14,6 +23,7 @@ export class PojectController {
     private readonly listProjectsUseCase: ListProjects,
     private readonly detailProjectByIdUseCase: DetailProjectById,
     private readonly updateProjectByIdUseCase: UpdateProjectById,
+    private readonly deleteProjectUseCase: DeleteProject,
   ) {}
 
   @Post()
@@ -35,5 +45,10 @@ export class PojectController {
   @Patch('/:id')
   async update(@Param('id') id: string, @Body() body: UdpdateProjectRequest) {
     return await this.updateProjectByIdUseCase.execute({ id, ...body });
+  }
+
+  @Delete('/:id')
+  async delete(@Param('id') id: string) {
+    return await this.deleteProjectUseCase.execute({ id });
   }
 }
