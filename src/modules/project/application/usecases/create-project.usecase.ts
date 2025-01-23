@@ -12,6 +12,10 @@ export type CreateProjectInput = {
   description?: string;
 };
 
+export type CreateProjectOutput = {
+  message: string;
+};
+
 @Injectable()
 export class CreateProject {
   @Inject(ApiKeyService)
@@ -23,7 +27,7 @@ export class CreateProject {
 
   constructor() {}
 
-  async execute(data: CreateProjectInput) {
+  async execute(data: CreateProjectInput): Promise<CreateProjectOutput> {
     const project = Project.create({
       name: data.name,
       description: data.description,
@@ -43,5 +47,9 @@ export class CreateProject {
 
     await this.projectRepo.create(project);
     await this.apiKeyRepo.saveKey(projectKey);
+
+    return {
+      message: 'Projeto criado com sucesso',
+    };
   }
 }

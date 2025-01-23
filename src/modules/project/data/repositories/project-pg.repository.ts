@@ -19,6 +19,12 @@ export class ProjectPgRepository implements ProjectRepository {
     });
   }
 
+  async list(): Promise<Project[]> {
+    const projects = await this.prisma.project.findMany();
+
+    return projects.map(ProjectMapper.toDomain);
+  }
+
   async findByName(data: { name: string }): Promise<Project | null> {
     const project = await this.prisma.project.findUnique({
       where: {
