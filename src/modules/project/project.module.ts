@@ -3,6 +3,7 @@ import {
   CreateProject,
   DeleteProject,
   DetailProjectById,
+  GenerateApiKey,
   ListProjects,
   UpdateProjectById,
 } from './application/usecases';
@@ -13,19 +14,23 @@ import {
 } from './data/repositories';
 import { PrismaModule } from '@modules/prisma/prisma.module';
 import { PojectController } from './api/controllers/project.controller';
+import { ApiKeyController } from './api/controllers/api-key.controller';
 
 @Module({
   imports: [PrismaModule],
   providers: [
+    // Project
     CreateProject,
     ListProjects,
     DetailProjectById,
     UpdateProjectById,
     DeleteProject,
-    ApiKeyService,
     ProjectPgRepository,
+    // Api Key
+    GenerateApiKey,
+    ApiKeyService,
     ProjectAPIKeyPgRepository,
   ],
-  controllers: [PojectController],
+  controllers: [PojectController, ApiKeyController],
 })
 export class ProjectModule {}
